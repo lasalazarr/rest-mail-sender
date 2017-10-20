@@ -1,0 +1,16 @@
+*.class
+*.log
+*.jar
+.gradle
+gradle-app.setting
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.idea/
+build.gradle
+gradle/
+gradlew
+gradlew.bat
+rest-mail-sender.iml
