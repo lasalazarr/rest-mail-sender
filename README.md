@@ -1,6 +1,21 @@
 # rest-mail-sender
 Complete example with mail and file attachment fired by rest service
 
+#### Set the email sender on the file: application.properties
+
+`
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=USUARIO@gmail.com
+spring.mail.password=USA_TU_PASSWORD
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.connectiontimeout=5000
+spring.mail.properties.mail.smtp.timeout=5000
+spring.mail.properties.mail.smtp.writetimeout=5000
+`
+
 #### 1) To compile the application run on command line:
 
 `
@@ -28,3 +43,17 @@ And a welcome page it is launched on on your browser go to the following URL: ht
 
 #### 3) To execute a post rest to send an email refer to:
 
+#####3.1) Set the email sender on the file: application.properties
+
+`
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=lasalazar@gmail.com
+spring.mail.password=USA_TU_PASSWORD
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.connectiontimeout=5000
+spring.mail.properties.mail.smtp.timeout=5000
+spring.mail.properties.mail.smtp.writetimeout=5000
+`

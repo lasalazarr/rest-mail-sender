@@ -1,3 +1,5 @@
+build/
+target/
 *.class
 *.log
 *.jar
@@ -14,3 +16,4 @@ gradle/
 gradlew
 gradlew.bat
 rest-mail-sender.iml
+
