@@ -28,25 +28,24 @@ public class RestMailSenderApplication {
 		private JavaMailSender sender;
 
 		@PostMapping("/with-attachment")
-		public String mailWithAttachment(){
+		public String mailWithAttachment(MailTo mailTo){
 			try {
-				sendEmail();
+				sendEmail(mailTo);
 			} catch (Exception e) {
-				e.printStackTrace();
+				return "KO";
 			}
 			return "OK";
 		}
 
-		private void sendEmail() throws Exception{
+		private void sendEmail(MailTo mailTo) throws Exception{
 			MimeMessage message = sender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message);
 
-			helper.setTo("lasalazar@gmail.com");
-			helper.setText("How are you?");
-			helper.setSubject("Hi");
+			helper.setTo(mailTo.getTo());//"lasalazar@gmail.com");
+			helper.setSubject(mailTo.getSubject());//"Hi");
+			helper.setText(mailTo.getMessage());//"How are you?");
 
 			sender.send(message);
 		}
-
 	}
 }
