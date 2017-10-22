@@ -10,6 +10,8 @@ public class MailTo {
 
     private String pathFileToAttach;
 
+    private String status;
+
     public MailTo() {
     }
 
@@ -41,6 +43,10 @@ public class MailTo {
 
     public void setSubject(String subject) { this.subject = subject; }
 
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
+
     @Override
     public String toString() {
         return "MailTo{" +
@@ -48,6 +54,7 @@ public class MailTo {
                 ", subject='" + subject + '\'' +
                 ", message='" + message + '\'' +
                 ", pathFileToAttach='" + pathFileToAttach + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

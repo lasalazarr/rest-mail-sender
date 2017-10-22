@@ -1,20 +1,25 @@
 package org.fastdev.restmailsender;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.mail.internet.MimeMessage;
+import java.net.URI;
 
 @SpringBootApplication
 public class RestMailSenderApplication {
 
-
+	private final Logger log = LoggerFactory.getLogger(RestMailSenderApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(RestMailSenderApplication.class, args);
@@ -28,16 +33,20 @@ public class RestMailSenderApplication {
 		private JavaMailSender sender;
 
 		@PostMapping("/with-attachment")
-		public String mailWithAttachment(MailTo mailTo){
+		public ResponseEntity<MailTo> mailWithAttachment(@RequestBody MailTo mailTo){
 			try {
-				sendEmail(mailTo);
+				// SERA
+				log.info("Send mail with parameters MailTo= {}",mailTo);
+				MailTo result = sendEmail(mailTo);
+				return ResponseEntity.created(new URI("/message/" +result.getTo()))
+						.headers("", result.getTo().toString()))
+						.body(result);
 			} catch (Exception e) {
-				return "KO";
+				log.error(e.getMessage(), e);
 			}
-			return "OK";
 		}
 
-		private void sendEmail(MailTo mailTo) throws Exception{
+		private MailTo sendEmail(MailTo mailTo) throws Exception{
 			MimeMessage message = sender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message);
 
@@ -46,6 +55,7 @@ public class RestMailSenderApplication {
 			helper.setText(mailTo.getMessage());//"How are you?");
 
 			sender.send(message);
+			return mailTo;
 		}
 	}
 }
