@@ -3,7 +3,7 @@ target/
 *.class
 *.log
 *.jar
-.gradle
+#.gradle
 gradle-app.setting
 # IntelliJ project files
 .idea
@@ -11,9 +11,9 @@ gradle-app.setting
 out
 gen
 .idea/
-build.gradle
-gradle/
-gradlew
-gradlew.bat
+#build.gradle
+#gradle/
+#gradlew
+#gradlew.bat
 rest-mail-sender.iml
 
