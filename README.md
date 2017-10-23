@@ -57,3 +57,11 @@ spring.mail.properties.mail.smtp.connectiontimeout=5000
 spring.mail.properties.mail.smtp.timeout=5000
 spring.mail.properties.mail.smtp.writetimeout=5000
 `
+
+#### 4) Sample post to rest service: http://localhost:8080/v1/send-mail/with-attachment
+
+{"to" : "mail@gmail.com",
+ "subject" : "PRUEBA ENVIO",
+ "message"  : "ASDASDASDASDASDAS",
+ "pathFileToAttach" : "/sample.png"
+}
